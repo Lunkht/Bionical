@@ -1,0 +1,38 @@
+services:
+  bionical:
+    build: .
+    restart: unless-stopped
+    environment:
+      COOKIE_SECURE: ${COOKIE_SECURE:-true}
+      TRUST_PROXY: ${TRUST_PROXY:-false}
+      BASE_URL: ${BASE_URL:-http://localhost:3000}
+      SMTP_URL: ${SMTP_URL:-}
+      MAIL_FROM: "${MAIL_FROM:-Bionical <no-reply@bionical.com>}"
+      CONTACT_TO: ${CONTACT_TO:-}
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - bionical-data:/data   # volume Docker natif (pas de chemin C:\ sous WSL2)
+
+  mailpit:   # boîte mail de test locale (http://localhost:8025) : docker compose --profile dev up
+    image: axllent/mailpit
+    profiles: ["dev"]
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8025:8025"
+
+  caddy:   # HTTPS automatique (Let's Encrypt) : docker compose --profile prod up -d
+    image: caddy:2
+    profiles: ["prod"]
+    restart: unless-stopped
+    depends_on: [bionical]
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+
+volumes:
+  bionical-data:
+  caddy-data:

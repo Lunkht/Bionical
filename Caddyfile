@@ -1,0 +1,4 @@
+bionical.com, www.bionical.com {
+	encode zstd gzip
+	reverse_proxy bionical:3000
+}

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bionical — des modèles d’IA qui tournent chez vous</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div class="w">
+<a class="logo" href="#accueil"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l8.7 5v10L12 22 3.3 17V7z"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></svg>Bionical</a>
+<nav aria-label="Navigation principale">
+<a href="#accueil">Produit</a><a href="#prix">Prix</a><a href="#teams">Teams</a><a href="#a-propos">À propos</a><a href="#contact">Contact</a>
+</nav>
+<div class="acts" id="acts"></div>
+</div></header>
+
+<main>
+<section class="v hero" id="v-accueil"><div class="w">
+<h1>Des modèles d’IA qui tournent chez vous.</h1>
+<p class="lead">Bionical exécute des LLM sur votre ordinateur, votre smartphone et dans votre terminal. Vos fichiers et vos conversations ne quittent jamais l’appareil.</p>
+<div class="cta">
+<a class="btn" href="#inscription" data-guest>Créer un compte gratuit</a>
+<button class="cp" id="cp" type="button" aria-label="Copier la commande d’installation">curl -fsSL https://bionical.com/install | sh <span class="mut">copier</span></button>
+</div>
+<div class="stage">
+<div class="win desk"><div class="bar"><i></i><i></i><i></i>&nbsp; Bionical · projet-api</div>
+<div class="body"><div class="side"><b>Conversations</b><span class="on">Bug parseDate</span><span>Tests d’authentification</span><span>Notes d’architecture</span><b>Dossier local</b><span>~/projet-api · 126 fichiers</span></div>
+<div class="chat"><div class="msg u">Pourquoi parseDate échoue le 29 février ?</div>
+<div class="msg a">La validation suppose 28 jours en février. Testez l’année bissextile avant de vérifier le jour.<pre>if (m === 2 &amp;&amp; d === 29 &amp;&amp; !isLeap(y))
+  throw new RangeError("date invalide")</pre></div>
+<div><span class="chip">Qwen2.5 Coder 7B · hors ligne · 42 jetons/s</span></div></div></div></div>
+<div class="phone"><span class="chip">Mode avion</span><div class="msg u">Résume ma note vocale</div><div class="msg a">Trois décisions : budget validé, livraison le 12, appel client jeudi.</div><span class="mut" style="font-size:.7rem">Phi 3.5 mini · 14 jetons/s</span></div>
+<div class="win tw"><div class="bar"><i></i><i></i><i></i>&nbsp; bionical — zsh</div><div class="term" id="term" aria-live="polite"></div></div>
+</div>
+<div class="sec"><h2>Pensé pour travailler sans réseau</h2><p class="sub">Bionical charge le modèle en mémoire et répond sur votre machine. Le réseau ne sert qu’à télécharger les modèles.</p>
+<div class="bento">
+<div class="cell s4"><h3>Vos données restent sur l’appareil</h3><p>Fichiers, conversations et historique sont traités localement. Aucune requête ne part vers un serveur d’inférence.</p><div class="big">0<small>octet envoyé pendant une session</small></div></div>
+<div class="cell s2"><h3>Hors ligne</h3><p>Une fois le modèle téléchargé, le réseau devient optionnel.</p><span class="tog"><i></i>Mode avion</span></div>
+<div class="cell s3"><h3>Modèles ouverts</h3><p>Format GGUF. Importez aussi vos propres fichiers.</p><div class="bars"><div>Llama 3.2 3B<i style="width:43%"></i>2,0 Go</div><div>Qwen2.5 Coder 7B<i style="width:100%"></i>4,7 Go</div><div>Mistral 7B<i style="width:87%"></i>4,1 Go</div><div>Phi 3.5 mini<i style="width:47%"></i>2,2 Go</div></div></div>
+<div class="cell s3"><h3>Une CLI qui se branche partout</h3><p>Lit l’entrée standard, écrit sur la sortie standard.</p><div class="code">git diff | bionical run -p "Résume ces changements"
+cat notes.md | bionical run -p "Corrige l’orthographe" &gt; propre.md</div></div>
+</div></div>
+<div class="sec"><h2>De zéro à votre premier prompt en trois commandes</h2>
+<div class="steps">
+<div class="step"><span class="n">1</span><h3>Installer</h3><p>Un binaire, aucun service à configurer.</p><div class="code">curl -fsSL https://bionical.com/install | sh</div></div>
+<div class="step"><span class="n">2</span><h3>Télécharger un modèle</h3><p>Vérifié par somme de contrôle.</p><div class="code">bionical pull qwen2.5-coder:7b</div></div>
+<div class="step"><span class="n">3</span><h3>Lancer</h3><p>Dans le terminal ou l’application.</p><div class="code">bionical run qwen2.5-coder:7b</div></div>
+</div></div>
+<div class="sec"><h2>Questions fréquentes</h2><div style="margin-top:30px">
+<details><summary>Faut-il une connexion Internet ?</summary><p>Seulement pour télécharger Bionical et les modèles. Ensuite, tout fonctionne hors ligne.</p></details>
+<details><summary>Mes données sont-elles envoyées quelque part ?</summary><p>Non. Les requêtes sont traitées sur votre appareil. Les statistiques d’usage sont désactivées par défaut.</p></details>
+<details><summary>Quel matériel faut-il ?</summary><p>4 Go de mémoire suffisent pour les petits modèles, 8 Go sont conseillés pour les modèles de 7 milliards de paramètres.</p></details>
+<details><summary>Puis-je utiliser mes propres modèles ?</summary><p>Oui. Importez n’importe quel fichier GGUF avec <code>bionical import</code>.</p></details>
+</div></div>
+<div class="band"><h2>Installez Bionical en une minute.</h2><p>Gratuit pour un usage personnel, sans carte bancaire.</p><a class="btn" href="#inscription" data-guest>Créer un compte gratuit</a></div>
+</div></section>
+
+<section class="v" id="v-prix"><div class="w"><h2>Des prix simples, des modèles qui restent locaux</h2><p class="mut" style="margin-top:14px">Dans tous les plans, l’inférence se fait sur votre appareil. Le prix couvre le logiciel, la synchronisation locale et le support.</p><div class="seg" role="group" aria-label="Facturation"><button type="button" data-bill="m" aria-pressed="true">Mensuel</button><button type="button" data-bill="a" aria-pressed="false">Annuel, −17 %</button></div><div class="plans" style="margin-top:24px"><div class="plan"><h3>Local</h3><div class="pr">0 €</div><span class="mut">pour toujours</span><ul><li>Modèles illimités</li><li>Desktop, mobile et CLI</li><li>Import GGUF</li><li>Aide de la communauté</li></ul><a class="btn o" href="#inscription" data-guest>Commencer</a></div><div class="plan f"><h3>Pro <span class="pill">Recommandé</span></h3><div class="pr" data-m="12 €" data-a="10 €">12 €</div><span class="mut" data-nm="par mois" data-na="par mois, facturé 120 € par an">par mois</span><ul><li>Tout Local</li><li>Synchronisation entre vos appareils en réseau local</li><li>Contexte long jusqu’à 128 000 jetons</li><li>Support par e‑mail</li></ul><a class="btn" href="#inscription" data-guest>Choisir Pro</a></div><div class="plan"><h3>Teams</h3><div class="pr" data-m="24 €" data-a="20 €">24 €</div><span class="mut" data-nm="par utilisateur et par mois" data-na="par utilisateur et par mois, facturé annuellement">par utilisateur et par mois</span><ul><li>Tout Pro</li><li>Registre de modèles privé</li><li>Règles partagées et SSO</li><li>Journal d’audit local</li></ul><a class="btn o" href="#teams">Voir Teams</a></div></div></div></section>
+
+<section class="v" id="v-teams"><div class="w">
+<h2>Bionical pour les équipes</h2>
+<p class="mut" style="margin-top:14px">Donnez le même assistant local à toute l’équipe, avec vos modèles, vos règles et vos serveurs.</p>
+<div class="rows">
+<div class="row2"><h3>Registre privé</h3><p>Publiez des modèles validés par votre équipe. Les membres les installent avec <code>bionical pull</code>.</p></div>
+<div class="row2"><h3>Règles partagées</h3><p>Définissez les modèles autorisés, la taille de contexte et les dossiers accessibles.</p></div>
+<div class="row2"><h3>Audit sans fuite</h3><p>Le journal reste sur la machine de chaque membre. Vous exportez ce que vous choisissez.</p></div>
+</div>
+<div id="team-in" style="margin-top:48px"></div>
+</div></section>
+
+<section class="v" id="v-a-propos"><div class="w">
+<h2>Une IA utile ne devrait pas exiger vos données</h2>
+<p style="margin-top:20px">Bionical est né d’un constat : la plupart des assistants envoient vos fichiers à un serveur distant pour répondre à une question. Les modèles ouverts sont désormais assez petits pour tourner sur un portable ou un téléphone.</p>
+<p>Nous construisons les outils pour les exécuter simplement : une application, une CLI et un format ouvert. Pas de dépendance à un service tiers pour répondre, pas de compte obligatoire pour s’en servir hors ligne.</p>
+<div class="rows">
+<div class="row2"><h3>Souveraineté</h3><p>Vos données, vos modèles, vos serveurs.</p></div>
+<div class="row2"><h3>Transparence</h3><p>Formats ouverts, modèles ouverts, aucune collecte sans votre accord.</p></div>
+<div class="row2"><h3>Sobriété</h3><p>Des modèles quantifiés qui tiennent sur le matériel que vous avez déjà.</p></div>
+</div>
+</div></section>
+
+<section class="v" id="v-contact"><div class="w">
+<h2>Nous écrire</h2>
+<p class="mut" style="margin-top:14px">Une question sur un plan, un modèle ou une offre Teams ? Nous répondons par e‑mail.</p>
+<form id="f-contact">
+<label>Nom<input name="n" required autocomplete="name"></label>
+<label>E‑mail<input name="e" type="email" required autocomplete="email"></label>
+<label>Sujet<select name="s"><option>Question générale</option><option>Offre Teams</option><option>Support technique</option></select></label>
+<label>Message<textarea name="m" required></textarea></label>
+<button class="btn" type="submit">Envoyer le message</button>
+</form>
+</div></section>
+
+<section class="v" id="v-inscription"><div class="w auth"><div class="pitch"><h2>Votre IA, sur votre machine.</h2><ul><li>Modèles ouverts, téléchargés une seule fois</li><li>Fonctionne hors ligne</li><li>Application, mobile et CLI inclus</li></ul></div><div class="pan"><h2>Créer un compte</h2><form id="f-up">
+<label>Nom<input name="n" required autocomplete="name"></label>
+<label>E‑mail<input name="e" type="email" required autocomplete="email"></label>
+<label>Mot de passe (8 caractères minimum)<input name="p" type="password" minlength="8" required autocomplete="new-password"></label>
+<p class="err" id="e-up" role="alert"></p>
+<button class="btn" type="submit">Créer mon compte</button>
+<span class="mut">Déjà inscrit ? <a href="#connexion">Se connecter</a></span>
+</form></div></div></section>
+
+<section class="v" id="v-connexion"><div class="w auth"><div class="pitch"><h2>Content de vous revoir.</h2><ul><li>Vos modèles restent sur vos appareils</li><li>Mêmes réglages sur ordinateur, mobile et CLI</li><li>Gratuit, sans carte bancaire</li></ul></div><div class="pan"><h2>Se connecter</h2><form id="f-in">
+<label>E‑mail<input name="e" type="email" required autocomplete="email"></label>
+<label>Mot de passe<input name="p" type="password" required autocomplete="current-password"></label>
+<p class="err" id="e-in" role="alert"></p>
+<button class="btn" type="submit">Se connecter</button>
+<span class="mut">Pas de compte ? <a href="#inscription">Créer un compte</a></span>
+<span class="mut"><a href="#mot-de-passe-oublie">Mot de passe oublié ?</a></span>
+</form></div></div></section>
+
+<section class="v" id="v-profil"><div class="w acct"><aside><nav class="sn" aria-label="Compte"><a href="#profil">Profil</a><a href="#parametres">Paramètres</a><a href="#teams">Équipe</a><button type="button" data-out>Se déconnecter</button></nav></aside><div>
+<div class="who"><div class="av" id="av" aria-hidden="true"></div><div><h2 id="pn"></h2><span class="pill" id="pp"></span></div></div>
+<div class="grp"><dl class="dl"><dt>E‑mail</dt><dd id="pe"></dd><dt>Membre depuis</dt><dd id="pd"></dd></dl></div>
+<h3>Modifier mon profil</h3>
+<form id="f-pr"><label>Nom<input name="n" required></label><label>E‑mail<input name="e" type="email" required></label>
+<p class="err" id="e-pr" role="alert"></p><button class="btn" type="submit">Enregistrer les modifications</button></form>
+</div></div></section>
+
+<section class="v" id="v-parametres"><div class="w acct"><aside><nav class="sn" aria-label="Compte"><a href="#profil">Profil</a><a href="#parametres">Paramètres</a><a href="#teams">Équipe</a><button type="button" data-out>Se déconnecter</button></nav></aside><div>
+<h2>Paramètres</h2>
+<h3>Apparence</h3>
+<div class="grp"><label class="sw"><span>Thème<small>Suit votre système par défaut.</small></span><select id="s-theme"><option value="auto">Automatique</option><option value="light">Clair</option><option value="dark">Sombre</option></select></label></div>
+<h3>Modèles</h3>
+<div class="grp"><label class="sw"><span>Modèle par défaut<small>Utilisé par la CLI et les applications.</small></span><select id="s-model"><option value="llama3.2:3b">Llama 3.2 3B</option><option value="qwen2.5-coder:7b">Qwen2.5 Coder 7B</option><option value="mistral:7b">Mistral 7B</option><option value="phi3.5:mini">Phi 3.5 mini</option></select></label>
+<label class="sw"><span>Taille du contexte</span><select id="s-ctx"><option>4096</option><option>8192</option><option>32768</option></select></label></div>
+<h3>Appareils et confidentialité</h3>
+<div class="grp"><label class="sw"><span>Télécharger les modèles en Wi‑Fi uniquement<small>Sur smartphone.</small></span><input type="checkbox" id="s-wifi"></label>
+<label class="sw"><span>Partager des statistiques d’usage anonymes<small>Désactivé par défaut.</small></span><input type="checkbox" id="s-use"></label></div>
+<h3>Sécurité</h3>
+<div class="grp" style="padding:20px 24px 24px"><form id="f-pw" style="margin-top:0"><label>Mot de passe actuel<input name="c" type="password" required autocomplete="current-password"></label>
+<label>Nouveau mot de passe (8 caractères minimum)<input name="p" type="password" minlength="8" required autocomplete="new-password"></label>
+<p class="err" id="m-pw" role="status"></p><button class="btn" type="submit">Changer le mot de passe</button></form></div>
+<div class="dz"><h3 style="margin-top:0">Supprimer mon compte</h3>
+<p class="mut" style="margin-top:8px">Cette action est définitive. Votre profil, vos réglages et votre équipe sont effacés. Saisissez votre e‑mail pour confirmer.</p>
+<form id="f-del" style="margin-top:12px"><input id="d-in" placeholder="votre e‑mail" aria-label="Confirmer avec votre e‑mail" autocomplete="off">
+<button class="btn d" id="d-btn" type="submit" disabled>Supprimer définitivement mon compte</button></form></div>
+</div></div></section>
+<section class="v" id="v-mot-de-passe-oublie"><div class="w auth one"><div class="pan"><h2>Mot de passe oublié</h2>
+<p class="mut" style="margin:10px 0 0">Saisissez l’e‑mail de votre compte. Nous vous envoyons un lien valable 1 heure.</p>
+<form id="f-forgot"><label>E‑mail<input name="e" type="email" required autocomplete="email"></label>
+<p class="err" id="m-forgot" role="status"></p><button class="btn" type="submit">Envoyer le lien</button>
+<span class="mut"><a href="#connexion">Retour à la connexion</a></span></form></div></div></section>
+
+<section class="v" id="v-reinitialiser"><div class="w auth one"><div class="pan"><h2>Nouveau mot de passe</h2>
+<form id="f-reset"><label>Nouveau mot de passe (8 caractères minimum)<input name="p" type="password" minlength="8" required autocomplete="new-password"></label>
+<p class="err" id="m-reset" role="alert"></p><button class="btn" type="submit">Changer le mot de passe</button></form></div></div></section>
+</main>
+
+<footer><div class="w">
+<div><a class="logo" href="#accueil" style="display:flex">Bionical</a><p style="max-width:30ch;margin-top:10px">Des modèles d’IA qui restent chez vous.</p><span>© 2026 Bionical</span></div>
+<div><h4>Produit</h4><a href="#accueil">Fonctionnalités</a><a href="#prix">Prix</a><a href="#teams">Teams</a></div>
+<div><h4>Société</h4><a href="#a-propos">À propos</a><a href="#contact">Contact</a></div>
+<div><h4>Compte</h4><a href="#connexion">Se connecter</a><a href="#inscription">S’inscrire</a><a href="#parametres">Paramètres</a></div>
+</div></footer>
+<div id="toast" role="status"></div>
+
+<script src="/app.js" defer></script>
+</body>
+</html>
